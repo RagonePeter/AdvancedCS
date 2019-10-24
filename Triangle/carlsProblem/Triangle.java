@@ -13,6 +13,11 @@ public class Triangle extends Polygon {
 	
 	public Triangle(ArrayList<Point> pList) {
 		super(TRIANGLE_SIDES, pList);
+		
+		System.out.println("We called this.");
+		
+		
+		
 	}
 	
 	public Triangle(Point p1, Point p2, Point p3) {
@@ -32,13 +37,20 @@ public class Triangle extends Polygon {
 		Point b = coordinates.get(1);
 		Point c = coordinates.get(2);
 		
+		System.out.println("A.x is " + a.x);
+		System.out.println("A.y is " + a.y);
+		System.out.println("B.x is " + b.x);
+		System.out.println("B.y is " + b.y);
+		System.out.println("C.x is " + c.x);
+		System.out.println("C.y is " + c.y);
+		
 		//Cross Product
 		
 		//ac x ab
 		
 		//(b.x - a.x) (c.y - a.y) - (b.y - a.y) (c.x - a.x)
 		
-		double area = (b.x = a.x) * (c.y - a.y) -
+		double area = (b.x - a.x) * (c.y - a.y) -
 				(b.y - a.y) * (c.x - a.x);
 		
 		return area/2;
@@ -46,7 +58,23 @@ public class Triangle extends Polygon {
 
 	public boolean isEquilateral() {
 		// TODO Auto-generated method stub
-		return false;
+		boolean equal = false;
+		Point a = coordinates.get(0);
+		Point b = coordinates.get(1);
+		Point c = coordinates.get(2);
+		
+		double sideA = Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2);
+		System.out.println(sideA);
+		double sideB = Math.pow(b.x-c.x, 2) + Math.pow(b.y-c.y, 2);
+		System.out.println(sideB);
+		double sideC = Math.pow(c.x-a.x, 2) + Math.pow(c.y-a.y, 2);
+		System.out.println(sideC);
+		
+		if( Math.abs(sideA - sideB) <= 0.00003 && Math.abs(sideC - sideB) <= 0.00003) {
+			equal = true;
+		}
+		
+		return equal;
 	}
 	
 
